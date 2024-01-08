@@ -1,50 +1,232 @@
+/* escolha de cores e fonte */
+:root{
+  --cor-1: #ffffff;
+}
+
+
+
+/* reset css */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
 /*header*/
 a {
-    text-decoration: none;
-    color: inherit;
+  text-decoration: none;
+  color: inherit;
+}
+
+li {
+  list-style-type: none;
+}
+
+header {
+  background-color: var(--cor-1);
+  box-shadow: rgb(0 0 0 / 75%) 0px 13px 30px -12px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+.header{
+  top: 0;
+  position: fixed;
+  width: 100%;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 16px;
+}
+
+li {
+  color: #e1e1e6;
+  font-size: 20px;
+
+  transition: color 0.1s;
+}
+
+li.active,
+li:hover {
+  color: #6b6b6b;
+}
+
+li a {
+  padding: 8px;
+}
+
+@media (min-width: 960px) {
+  .hide-on-desktop {
+    display: none;
   }
-  
-  li {
-    list-style-type: none;
-  }
-  
-  header {
-    background-color: #ffffff;
-    position: relative;
-    box-shadow: rgb(0 0 0 / 75%) 0px 13px 30px -12px;
-  }
-  
-  nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1120px;
-    margin: 0 auto;
-    padding: 16px;
-  }
-  
-  .brand-name {
-    font-size: 32px;
-    font-weight: bold;
-  }
-  
+}
+
+@media (max-width: 960px) {
   .navbar-links {
+    opacity: 0;
+    transform: translateY(-140%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background-color: #202024;
+    box-shadow: rgb(0 0 0 / 75%) 0px 13px 30px -12px;
+    padding: 32px 0;
+    border-top: outset;
+    gap: 0;
+    z-index: 1;
+
+    transition: 0.5s;
+  }
+
+  .navbar-links.show {
+    opacity: 1;
+    top: 100%;
+    transform: translateY(0);
+  }
+
+  .navbar-links li {
+    text-align: center;
+  }
+
+  .navbar-links li a {
+    line-height: 40px;
+    width: 100%;
+    display: block;
+  }
+
+  .menu-hamb-button {
     display: flex;
-    gap: 16px;
+    flex-direction: column;
+    gap: 6px;
   }
-  
-  li {
-    color: #e1e1e6;
-    font-size: 20px;
-  
-    transition: color 0.1s;
+
+  .btn-line {
+    width: 24px;
+    height: 3px;
+    background: #e1e1e6;
+    transition: 0.3s;
   }
-  
-  li.active,
-  li:hover {
-    color: #6b6b6b;
+
+  .menu-hamb-button.isOpen .btn-line:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
   }
-  
-  li a {
-    padding: 8px;
+
+  .menu-hamb-button.isOpen .btn-line:nth-child(2) {
+    opacity: 0;
   }
+
+  .menu-hamb-button.isOpen .btn-line:nth-child(3) {
+    transform: rotate(-45deg) translate(8px, -8px);
+  }
+
+  .menu-overlay.show {
+    position: fixed;
+  }
+}
+
+/* footer */
+footer {
+  padding: 3rem;
+}
+
+.footer {
+  background-color: #e1e1e6;
+  text-align: center;
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+  text-align: center;
+}
+
+/* card */
+.card {
+  width: 10rem;
+  height: 13rem;
+  background: var(--cor-1);
+  border-radius: 15px;
+  margin: 1rem;
+ }
+ 
+ .card span {
+  font-weight: 600;
+  color: #000000;
+  text-align: center;
+  display: block;
+  padding-top: 10px;
+  font-size: 16px;
+ }
+ 
+ .card .img {
+  display: flex;
+  width: 4rem;
+  height: 5rem;
+  border-radius: 15px;
+  margin: auto;
+  margin-top: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+ 
+ .card:hover {
+  background: #534bf3;
+ }
+
+ /* main */
+ main {
+  position: relative;
+  z-index: 0;
+  margin-top: 6rem; /* Ajuste conforme a altura do header */
+  display: flex;
+}
